@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<!-- FontAwesome -->
+	<link rel="stylesheet" href="bower_components/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+
+	<!-- App CSS -->
+	<link rel="stylesheet" href="css/app.css">
+	<title>Wubbabook</title>
+</head>
+<body>
+	<div class="navigation">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<div class="navigation__nav">
+						<div class="row">
+							<div class="col">
+								<img src="img/vueschool.png" alt="Logo" class="navigation__logo"></div>
+							<div class="col col-md-8">
+								<div class="search">
+									<input type="search" placeholder="" class="search__box">
+									<span> <i class="fa fa-search"></i>
+										Buscar
+									</span>
+								</div>
+							</div>
+							<div class="col">
+								<div class="media align-items-center">
+									<img src="img/user-avatar.jpg" alt="" class="image image--relative image--small mr-3">
+									<div class="media-body">
+										<h6 class="mt-0">Rick Sanchez</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-10 offset-md-1">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="block trends-widget">
+							<h5 class="mb-4">Tendencias para ti</h5>
+							<div class="trends-widget__item">
+								<a href="#">#RubberBabyBuggy</a>
+								<span>13,9 mil likes</span>
+							</div>
+							<div class="trends-widget__item">
+								<a href="#">#WubbaLubaDub</a>
+								<span>10,2 mil likes</span>
+							</div>
+							<div class="trends-widget__item">
+								<a href="#">#NoobNoob</a>
+								<span>7,852 likes</span>
+							</div>
+							<div class="trends-widget__item">
+								<a href="#">#MortyForever</a>
+								<span>5,126 likes</span>
+							</div>
+							<div class="trends-widget__item">
+								<a href="#">#Rikitikitavi</a>
+								<span>2,458 likes</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="block new-post">
+							<div class="new-post__content">
+								<img src="img/user-avatar.jpg" alt="" class="image">
+								<div class="text">
+									<textarea name="post-text" cols="30" rows="10" placeholder="Wubba Lubba Dub Dub!" class="form-control" ></textarea>
+									<div class="text-right">
+										<br>(150)</div>
+								</div>
+							</div>
+							<div class="new-post__actions">
+								<div class="row align-items-center">
+									<div class="col-md-6">
+										<ul class="list">
+											<li>
+												<a href="#" title="Adjuntar imagen"> <i class="far fa-image"></i>
+												</a>
+											</li>
+											<li>
+												<a href="#" title="Emojis">
+													<i class="far fa-grin-tongue"></i>
+												</a>
+											</li>
+											<li>
+												<a href="#" title="Marcar como algo">
+													<i class="far fa-flag"></i>
+												</a>
+											</li>
+											<li>
+												<a href="#" title="Programar publicacion">
+													<i class="far fa-calendar-check"></i>
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div class="col-md-6 text-right">
+										<a href="#" class="button">Post</a>
+									</div>
+								</div>
+							</div>
+						</div>
+	
+						<div class="feed block">
+							<div class="feed-post">
+								<div class="media align-items-center">
+									<img src="img/user-avatar.jpg" class="image image--relative mr-3" alt="">
+									<div class="media-body">
+										<h6 class="mt-0">Rick Sanchez</h6>
+										Hace 5 minutos
+									</div>
+								</div>
+								<div class="mt-4 mb-5 feed-post__text">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non iusto fugit nemo voluptates odit aut dolores vel error corrupti, cupiditate quisquam inventore accusamus voluptatem a quibusdam porro quos aperiam laudantium.
+								</div>
+								<img src="img/rick-morty-2.jpg" alt="" class="feed-post__image img-fluid">
+								<div class="feed-post__bottom text-center">
+									<div class="row align-items-center">
+										<div class="col">
+											<a href="#">
+												<i class="far mr-1 fa-comment"></i>
+												12 Comentarios
+											</a>
+										</div>
+										<div class="col">
+											<a href="#">
+												<i class="far mr-1 fa-heart"></i>
+												10 Likes
+											</a>
+										</div>
+										<div class="col">
+											<a href="#">
+												<i class="far mr-1 fa-share-square"></i>
+												5 Shares
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="block follow-widget">
+							<h5 class="mb-4">A quién seguir</h5>
+							<div v-for="item in relatedFriends" class="follow-widget__item">
+								<div class="media">
+									<img class="mr-3 image" src="img/user-avatar.jpg" >
+									<div class="media-body">
+										<h6 class="mt-0 mb-1">Evil Rick</h6>
+										@ricksanchez87
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- JavaScript -->
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

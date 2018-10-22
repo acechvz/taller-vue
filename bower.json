@@ -1,0 +1,24 @@
+{
+  "name": "taller-vue",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "Alan <acechvz@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
+    "vue": "^2.5.17",
+    "fontawesome": "^5.4.1"
+  }
+}
