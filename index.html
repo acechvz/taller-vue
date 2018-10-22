@@ -15,27 +15,30 @@
 	<title>Wubbabook</title>
 </head>
 <body>
-	<div class="navigation">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-10 offset-md-1">
-					<div class="navigation__nav">
-						<div class="row">
-							<div class="col">
-								<img src="img/vueschool.png" alt="Logo" class="navigation__logo"></div>
-							<div class="col col-md-8">
-								<div class="search">
-									<input type="search" placeholder="" class="search__box">
-									<span> <i class="fa fa-search"></i>
-										Buscar
-									</span>
+	<div id="app">
+		<div class="navigation" :class="{ focused: isSearching || search.length >
+			0 }">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-10 offset-md-1">
+						<div class="navigation__nav">
+							<div class="row">
+								<div class="col">
+									<img src="img/vueschool.png" alt="Logo" class="navigation__logo"></div>
+								<div class="col col-md-8">
+									<div class="search">
+										<input type="search" v-model="search" placeholder="" class="search__box" @focus=" isSearching = true" @blur="isSearching = false">
+										<span> <i class="fa fa-search"></i>
+											Buscar
+										</span>
+									</div>
 								</div>
-							</div>
-							<div class="col">
-								<div class="media align-items-center">
-									<img src="img/user-avatar.jpg" alt="" class="image image--relative image--small mr-3">
-									<div class="media-body">
-										<h6 class="mt-0">Rick Sanchez</h6>
+								<div class="col">
+									<div class="media align-items-center">
+										<img src="img/user-avatar.jpg" alt="" class="image image--relative image--small mr-3">
+										<div class="media-body">
+											<h6 class="mt-0">{{ user.name }}</h6>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -44,125 +47,102 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-10 offset-md-1">
-				<div class="row">
-					<div class="col-md-3">
-						<div class="block trends-widget">
-							<h5 class="mb-4">Tendencias para ti</h5>
-							<div class="trends-widget__item">
-								<a href="#">#RubberBabyBuggy</a>
-								<span>13,9 mil likes</span>
-							</div>
-							<div class="trends-widget__item">
-								<a href="#">#WubbaLubaDub</a>
-								<span>10,2 mil likes</span>
-							</div>
-							<div class="trends-widget__item">
-								<a href="#">#NoobNoob</a>
-								<span>7,852 likes</span>
-							</div>
-							<div class="trends-widget__item">
-								<a href="#">#MortyForever</a>
-								<span>5,126 likes</span>
-							</div>
-							<div class="trends-widget__item">
-								<a href="#">#Rikitikitavi</a>
-								<span>2,458 likes</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="block new-post">
-							<div class="new-post__content">
-								<img src="img/user-avatar.jpg" alt="" class="image">
-								<div class="text">
-									<textarea name="post-text" cols="30" rows="10" placeholder="Wubba Lubba Dub Dub!" class="form-control" ></textarea>
-									<div class="text-right">
-										<br>(150)</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="block trends-widget">
+								<h5 class="mb-4">Tendencias para ti</h5>
+								<div class="trends-widget__item">
+									<a href="#">#RubberBabyBuggy</a>
+									<span>13,9 mil likes</span>
 								</div>
-							</div>
-							<div class="new-post__actions">
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<ul class="list">
-											<li>
-												<a href="#" title="Adjuntar imagen"> <i class="far fa-image"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#" title="Emojis">
-													<i class="far fa-grin-tongue"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#" title="Marcar como algo">
-													<i class="far fa-flag"></i>
-												</a>
-											</li>
-											<li>
-												<a href="#" title="Programar publicacion">
-													<i class="far fa-calendar-check"></i>
-												</a>
-											</li>
-										</ul>
-									</div>
-									<div class="col-md-6 text-right">
-										<a href="#" class="button">Post</a>
-									</div>
+								<div class="trends-widget__item">
+									<a href="#">#WubbaLubaDub</a>
+									<span>10,2 mil likes</span>
+								</div>
+								<div class="trends-widget__item">
+									<a href="#">#NoobNoob</a>
+									<span>7,852 likes</span>
+								</div>
+								<div class="trends-widget__item">
+									<a href="#">#MortyForever</a>
+									<span>5,126 likes</span>
+								</div>
+								<div class="trends-widget__item">
+									<a href="#">#Rikitikitavi</a>
+									<span>2,458 likes</span>
 								</div>
 							</div>
 						</div>
-	
-						<div class="feed block">
-							<div class="feed-post">
-								<div class="media align-items-center">
-									<img src="img/user-avatar.jpg" class="image image--relative mr-3" alt="">
-									<div class="media-body">
-										<h6 class="mt-0">Rick Sanchez</h6>
-										Hace 5 minutos
+						<div class="col-md-6">
+							<div class="block new-post">
+								<div class="new-post__content">
+									<img src="img/user-avatar.jpg" alt="" class="image">
+									<div class="text">
+										<textarea v-model="postText" cols="30" rows="10" placeholder="Wubba Lubba Dub Dub!"
+											class="form-control" 
+											:class="{
+											'focused': writingPost || postText.length >
+											0,
+											'is-invalid' : maxCharactersError }"
+											@focus="writingPost = true"
+											@blur="writingPost = false">
+										</textarea>
+										<div v-if="writingPost || postText.length >
+											0" class="text-right">
+											<br>({{ charactersRemaining }})</div>
 									</div>
 								</div>
-								<div class="mt-4 mb-5 feed-post__text">
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non iusto fugit nemo voluptates odit aut dolores vel error corrupti, cupiditate quisquam inventore accusamus voluptatem a quibusdam porro quos aperiam laudantium.
-								</div>
-								<img src="img/rick-morty-2.jpg" alt="" class="feed-post__image img-fluid">
-								<div class="feed-post__bottom text-center">
+								<div class="new-post__actions" v-if="writingPost || postText.length > 0">
 									<div class="row align-items-center">
-										<div class="col">
-											<a href="#">
-												<i class="far mr-1 fa-comment"></i>
-												12 Comentarios
-											</a>
+										<div class="col-md-6">
+											<ul class="list">
+												<li>
+													<a href="#" title="Adjuntar imagen"> <i class="far fa-image"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" title="Emojis">
+														<i class="far fa-grin-tongue"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" title="Marcar como algo">
+														<i class="far fa-flag"></i>
+													</a>
+												</li>
+												<li>
+													<a href="#" title="Programar publicacion">
+														<i class="far fa-calendar-check"></i>
+													</a>
+												</li>
+											</ul>
 										</div>
-										<div class="col">
-											<a href="#">
-												<i class="far mr-1 fa-heart"></i>
-												10 Likes
-											</a>
-										</div>
-										<div class="col">
-											<a href="#">
-												<i class="far mr-1 fa-share-square"></i>
-												5 Shares
-											</a>
+										<div class="col-md-6 text-right">
+											<a href="#" @click.prevent="newPost()" class="button" :class="{ disabled: maxCharactersError || postText.length == 0 }" :disabled="maxCharactersError">Post</a>
 										</div>
 									</div>
 								</div>
 							</div>
+
+							<div class="feed block">
+								<div v-for="post in posts">
+									<feed-post :post="post"></feed-post>									
+								</div>
+							</div>
 						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="block follow-widget">
-							<h5 class="mb-4">A quién seguir</h5>
-							<div v-for="item in relatedFriends" class="follow-widget__item">
-								<div class="media">
-									<img class="mr-3 image" src="img/user-avatar.jpg" >
-									<div class="media-body">
-										<h6 class="mt-0 mb-1">Evil Rick</h6>
-										@ricksanchez87
+						<div class="col-md-3">
+							<div class="block follow-widget">
+								<h5 class="mb-4">A quién seguir</h5>
+								<div v-for="item in relatedFriends" class="follow-widget__item">
+									<div class="media">
+										<img class="mr-3 image" :src="item.image" :alt="item.name">
+										<div class="media-body">
+											<h6 class="mt-0 mb-1">{{ item.name }}</h6>
+											@{{ formatUsername( item.name, item.id ) }}
+										</div>
 									</div>
 								</div>
 							</div>
@@ -175,6 +155,124 @@
 
 	<!-- JavaScript -->
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/popper.js/dist/umd/popper.min.js"></script>
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="bower_components/vue/dist/vue.min.js"></script>
+
+	<script>
+	Vue.config.devtools = true;
+
+	// Global component
+	Vue.component('feed-post', {
+		props: ['post'],
+		data: function () {
+			return {
+				liked: false
+			}
+		},
+		methods: {
+			giveLike: function() {
+				if (!this.liked) {
+					this.post.likes++;
+					this.liked = true;
+				}
+			}
+		},
+		template: '<div> <div class="feed-post"> <div class="media align-items-center"> <img :src="post.author_image" class="image image--relative mr-3" alt=""> <div class="media-body"> <h6 class="mt-0">{{ post.author }}</h6> Hace <span v-if="post.time > 0">{{ post.time }} minutos</span><span v-else>instantes</span> </div> </div> <div class="mt-4 mb-5 feed-post__text">{{ post.text }}</div> <div v-if="post.image"> <img :src="post.image" alt="" class="feed-post__image img-fluid"> </div> <div class="feed-post__bottom text-center"> <div class="row align-items-center"> <div class="col"> <a href="#"> <i class="far mr-1 fa-comment"></i> {{ post.comments }} Comentarios </a> </div> <div class="col"> <a href="#" @click.prevent="giveLike"> <i class="mr-1 fa-heart" :class="{ far: !liked, fa: liked }"></i> {{ post.likes }} Likes </a> </div> <div class="col"> <a href="#"> <i class="far mr-1 fa-share-square"></i> {{ post.shares }} Shares </a> </div> </div> </div> </div> </div>'
+	});
+
+	var app = new Vue({
+		el: '#app',
+		data: {
+			user: {
+				name: 'Rick Sanchez',
+				image: 'img/user-avatar.jpg'
+			},
+			writingPost: false,
+			search: '',
+			isSearching: false,
+			maxCharacters: 150,
+			postText: '',
+			maxCharactersError: false,
+			relatedFriends: [],
+			posts: [
+				{
+					author_image: 'img/user-king-flips.jpg',
+					author: 'King Flippy',
+					image: 'img/rick-morty-2.jpg',
+					text: "Because I don't respect therapy; because I'm a scientist; because I invent, transform, create, and destroy for a living, and when I don't like something about the world, I change it. And I don't think going to a rented office in a strip mall to listen to some agent of averageness explain which words mean which feelings has ever helped anyone do anything. I think it's helped a lot of people get comfortable and stop panicking, which is a state of mind we value in the animals we eat, but not something I want for myself. I'm not a cow, I'm a pickle... when I feel like it.",
+					likes: 12,
+					shares: 32,
+					comments: 2,
+					time: 3
+				},
+				{
+					author_image: 'img/user-meeseeks.jpg',
+					author: 'Mr. Meeseeks',
+					image: 'img/rick-morty-3.jpg',
+					text: "This is Principal Vagina. No relation. You're growing up fast, Morty. You're going into a great big thorn straight into my ass. I'm not looking for judgement, just a yes or no. Can you assimilate a giraffe? Don't be a baby! You avoid getting shot in real life all the time, Morty! Just do the same thing here and we'll be fine!",
+					likes: 21,
+					shares: 5,
+					comments: 8,
+					time: 10
+				},
+				{
+					author_image: 'img/user-pickle-rick.jpg',
+					author: 'Pickle Rick',
+					image: 'img/rick-morty-1.jpg',
+					text: "Awwww thanks, bitch! Don't break an arm jerking yourself off Morty. Rubber baby buggy bumpers! I'm Mr. Crowbar, and here is my friend, who is also a crowbar!",
+					likes: 35,
+					shares: 16,
+					comments: 14,
+					time: 16
+				}
+			]
+		},
+		computed: {
+			charactersRemaining: function () {
+				var characters = this.maxCharacters - this.postText.length;
+				this.maxCharactersError = characters < 0;
+				return characters;
+			}
+		},
+		methods: {
+			isPosting: function() {
+				return writingPost || postText.length > 0;
+			},
+			formatUsername: function(name, id) {
+				return name.toLowerCase().replace(' ', '') + id;
+			},
+			newPost: function() {
+				var post = {};
+
+				post.author_image = this.user.image;
+				post.author = this.user.name;
+				post.text = this.postText;
+				post.comments = post.shares = post.likes = 0;
+
+				this.posts.unshift(post);
+
+				this.postText = '';
+			},
+		},
+		mounted() {
+			var charactersIds = '[';
+
+			for (var i = 2; i >= 0; i--) {
+				charactersIds += Math.floor((Math.random() * 250) + 1);
+				if (i !== 0) {
+					charactersIds += ',';
+				}
+			}
+
+			charactersIds += ']';
+
+			axios
+			.get('https://rickandmortyapi.com/api/character/' + charactersIds)
+			.then(response => (this.relatedFriends = response.data))
+		}
+	});
+	</script>
 </body>
 </html>
